@@ -273,3 +273,27 @@ input[type="radio"] {
     font-family: 'Courier New', monospace;
     letter-spacing: 1px;
 }
+
+/* Edit Form Styles (for Modal) */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.edit-form .form-group {
+    margin-bottom: 0;
+}
+
+.edit-form .form-group small {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    margin-top: var(--spacing-xs);
+    font-style: italic;
+}
+
+.edit-form input:disabled {
+    background-color: var(--background-secondary);
+    cursor: not-allowed;
+    opacity: 0.7;
+}

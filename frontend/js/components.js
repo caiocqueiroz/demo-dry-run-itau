@@ -243,7 +243,120 @@ function closeModal() {
 
 // Funções de ação para tabelas
 function editClient(cpf) {
-    showToast('Funcionalidade de edição será implementada em breve', 'info');
+    showLoading(true);
+    
+    api.getClientByCPF(cpf)
+        .then(response => {
+            const client = response.data;
+            
+            const formContent = `
+                <form id="editClientForm" class="edit-form">
+                    <div class="form-group">
+                        <label for="editClientName">Nome Completo *</label>
+                        <input type="text" id="editClientName" value="${Utils.capitalize(client.nome)}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editClientCpf">CPF</label>
+                        <input type="text" id="editClientCpf" value="${Utils.formatCPF(client.cpf)}" disabled>
+                        <small>O CPF não pode ser alterado</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="editClientBirthDate">Data de Nascimento</label>
+                        <input type="date" id="editClientBirthDate" value="${client.data_nascimento}" disabled>
+                        <small>A data de nascimento não pode ser alterada</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="editClientEmail">E-mail</label>
+                        <input type="email" id="editClientEmail" value="${client.email || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label for="editClientPhone">Telefone</label>
+                        <input type="tel" id="editClientPhone" value="${Utils.formatPhone(client.telefone) || ''}">
+                    </div>
+                </form>
+            `;
+            
+            createModal(
+                `Editar Cliente - ${Utils.formatCPF(client.cpf)}`,
+                formContent,
+                [
+                    {
+                        text: 'Salvar Alterações',
+                        class: 'btn-primary',
+                        onclick: `saveClientEdit('${client.cpf}')`
+                    }
+                ]
+            );
+            
+            // Aplicar máscaras após criar o modal
+            setTimeout(() => {
+                Validation.applyInputMasks();
+            }, 100);
+        })
+        .catch(error => {
+            handleAPIError(error, 'buscar dados do cliente');
+        })
+        .finally(() => {
+            showLoading(false);
+        });
+}
+
+function saveClientEdit(cpf) {
+    const form = document.getElementById('editClientForm');
+    if (!form) return;
+    
+    // Validar campos
+    const nome = document.getElementById('editClientName').value.trim();
+    const email = document.getElementById('editClientEmail').value.trim();
+    const telefone = document.getElementById('editClientPhone').value.trim();
+    
+    if (!nome) {
+        showToast('Nome é obrigatório', 'error');
+        return;
+    }
+    
+    if (!Validation.validateName(nome).valid) {
+        showToast('Nome inválido', 'error');
+        return;
+    }
+    
+    if (email && !Validation.validateEmail(email).valid) {
+        showToast('E-mail inválido', 'error');
+        return;
+    }
+    
+    if (telefone && !Validation.validatePhone(telefone).valid) {
+        showToast('Telefone inválido', 'error');
+        return;
+    }
+    
+    const updateData = {
+        nome: nome,
+        email: email || undefined,
+        telefone: Utils.cleanPhone(telefone) || undefined
+    };
+    
+    showLoading(true);
+    
+    api.updateClient(cpf, updateData)
+        .then(response => {
+            showToast('Cliente atualizado com sucesso!', 'success');
+            closeModal();
+            
+            // Invalidar cache e recarregar dados
+            invalidateCache(['clients']);
+            
+            // Recarregar tabela de clientes se estiver na seção de clientes
+            if (window.app && window.app.currentSection === 'clients') {
+                window.app.loadClientsData();
+            }
+        })
+        .catch(error => {
+            handleAPIError(error, 'atualizar cliente');
+        })
+        .finally(() => {
+            showLoading(false);
+        });
 }
 
 function viewClientAccounts(cpf) {
@@ -329,6 +442,7 @@ window.populateClientSelect = populateClientSelect;
 window.createModal = createModal;
 window.closeModal = closeModal;
 window.editClient = editClient;
+window.saveClientEdit = saveClientEdit;
 window.viewClientAccounts = viewClientAccounts;
 window.copyAccountNumber = copyAccountNumber;
 window.showConfirm = showConfirm;
