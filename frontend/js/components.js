@@ -276,6 +276,10 @@ function editClient(cpf) {
                 </form>
             `;
             
+            // Usar dados brutos do backend que já são sanitizados
+            // e escapar apenas para uso em JavaScript/onclick
+            const safeCpfForJs = client.cpf.replace(/'/g, "\\'");
+            
             createModal(
                 `Editar Cliente - ${Utils.formatCPF(client.cpf)}`,
                 formContent,
@@ -283,7 +287,7 @@ function editClient(cpf) {
                     {
                         text: 'Salvar Alterações',
                         class: 'btn-primary',
-                        onclick: `saveClientEdit('${client.cpf}')`
+                        onclick: `saveClientEdit('${safeCpfForJs}')`
                     }
                 ]
             );

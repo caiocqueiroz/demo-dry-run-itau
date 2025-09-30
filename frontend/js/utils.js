@@ -185,6 +185,18 @@ const Storage = {
     }
 };
 
+// Escape HTML para prevenir XSS
+function escapeHtml(unsafe) {
+    if (!unsafe) return '';
+    return unsafe
+        .toString()
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 // Exportar funções para uso global
 window.Utils = {
     formatCurrency,
@@ -203,5 +215,6 @@ window.Utils = {
     generateId,
     smoothScrollTo,
     isElementVisible,
-    Storage
+    Storage,
+    escapeHtml
 };
