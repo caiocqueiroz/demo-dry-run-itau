@@ -1,13 +1,33 @@
-# API Bancária - Node.js
+# 🏦 Sistema Bancário Completo - Itaú
 
-Uma API REST simples para sistema bancário desenvolvida em Node.js com Express e SQLite.
+![Sistema Completo](https://img.shields.io/badge/Status-Completed-success)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-%23404d59.svg?logo=express&logoColor=%2361DAFB)
+![SQLite](https://img.shields.io/badge/SQLite-%2307405e.svg?logo=sqlite&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?logo=javascript&logoColor=black)
 
-## Funcionalidades
+Sistema bancário completo com API REST robusta e interface frontend profissional.
 
-- **Cadastro de Clientes**: Nome, CPF e data de nascimento
-- **Criação de Contas**: Contas corrente e poupança associadas a clientes
-- **Consulta de Saldo**: Verificação de saldo por número da conta
-- **Listagem**: Listar clientes e contas
+## 🚀 Funcionalidades Completas
+
+### 🖥️ **Backend API (Node.js)**
+- **Cadastro de Clientes**: Nome, CPF, data de nascimento, email e telefone
+- **Criação de Contas**: Contas corrente e poupança com validação brasileira
+- **Consulta de Saldo**: Verificação em tempo real por número da conta
+- **Operações Bancárias**: Depósitos, saques e transferências
+- **Validação de CPF**: Algoritmo brasileiro completo
+- **Logging**: Sistema estruturado com Winston
+- **Segurança**: Rate limiting, CORS e validação de dados
+
+### 🎨 **Frontend Dashboard (HTML5/JavaScript)**
+- **Dashboard Analítico**: Métricas e gráficos em tempo real
+- **Interface Profissional**: Design moderno e responsivo
+- **Gestão de Clientes**: Cadastro com validação brasileira completa
+- **Gerenciamento de Contas**: Criação e consulta de contas
+- **Consulta de Saldo**: Interface intuitiva para verificação
+- **Temas**: Modo claro e escuro
+- **Gráficos Interativos**: Charts com Chart.js
 
 ## Tecnologias Utilizadas
 
@@ -42,6 +62,40 @@ npm start
 ```
 
 A API estará disponível em `http://localhost:3000`
+
+## 🎨 Frontend Dashboard
+
+### Instalação do Frontend
+
+1. Em um novo terminal, navegue para a pasta frontend:
+```bash
+cd frontend
+```
+
+2. Inicie um servidor HTTP:
+```bash
+# Opção 1: Python
+python3 -m http.server 8080
+
+# Opção 2: Node.js
+npx serve -p 8080
+
+# Opção 3: PHP
+php -S localhost:8080
+```
+
+3. Acesse o dashboard:
+```
+http://localhost:8080
+```
+
+### Funcionalidades do Dashboard
+- **📊 Dashboard**: Métricas e gráficos interativos
+- **👥 Clientes**: Cadastro e listagem com validação de CPF
+- **💳 Contas**: Criação de contas corrente e poupança
+- **💰 Saldo**: Consulta em tempo real por número da conta
+- **🎨 Temas**: Alternância entre modo claro e escuro
+- **📱 Responsivo**: Adaptado para desktop, tablet e mobile
 
 ## Endpoints da API
 
