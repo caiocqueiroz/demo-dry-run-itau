@@ -4,7 +4,7 @@
 
 class BankingAPI {
     constructor() {
-        this.baseURL = 'http://localhost:3000';
+        this.baseURL = 'http://localhost:3001';
         this.timeout = 10000; // 10 segundos
     }
 
