@@ -5,6 +5,12 @@
 1. Usar Copilot Agent com ChatMode para gerar um plano de implementação a partir de um arquivo de arquitetura de uma solução de API bancária.
 2. Usar Prompt Reutilizavel para verificar violações DRY (Dont Repeat Yourself) no código gerado.
 3. Criar uma issue com o plano de otimização baseado na na validação DRY
+4. Criar um repositorio em octocaio e criar uma issue com o conteudo do plano DRY.
+5. Adicionar a feature de frontend atraves do prompt reutilizavel frontend.prompt
+6. Adicionar a feature de edição de clientes (apos mostrar na UI que feature não esta disponivel) (Opcional, caso o copilot ja coloque essa feature, ai nao da pra mostrar) 
+Nesse caso, use o Copilot Agents page no github.com para fazer isso.
+7. Gerar um arquivo Gherkin baseado em BDD para executar um roteiro de testes com PlayWright.ßß
+
 
 
 ## Prompts, Comandos e afins
