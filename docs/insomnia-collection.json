@@ -1,0 +1,342 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-09-30T17:50:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "req_create_client",
+      "parentId": "fld_banking_api",
+      "modified": 1696095000000,
+      "created": 1696095000000,
+      "url": "http://localhost:3000/api/clientes",
+      "name": "1. Cadastrar Cliente",
+      "description": "Criar novo cliente com dados válidos",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Ana Paula Costa\",\n  \"cpf\": \"987.654.321-00\",\n  \"data_nascimento\": \"1992-08-15\",\n  \"email\": \"ana.costa@email.com\",\n  \"telefone\": \"11987654321\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1696095000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_create_account_corrente",
+      "parentId": "fld_banking_api",
+      "modified": 1696095000001,
+      "created": 1696095000001,
+      "url": "http://localhost:3000/api/contas",
+      "name": "2. Criar Conta Corrente",
+      "description": "Criar conta corrente para cliente cadastrado",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"cpf_cliente\": \"98765432100\",\n  \"tipo_conta\": \"corrente\",\n  \"saldo_inicial\": 1500.00\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1696095000001,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_create_account_poupanca",
+      "parentId": "fld_banking_api",
+      "modified": 1696095000002,
+      "created": 1696095000002,
+      "url": "http://localhost:3000/api/contas",
+      "name": "3. Criar Conta Poupança",
+      "description": "Criar conta poupança para o mesmo cliente",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"cpf_cliente\": \"98765432100\",\n  \"tipo_conta\": \"poupanca\",\n  \"saldo_inicial\": 5000.00\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1696095000002,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_list_clients",
+      "parentId": "fld_banking_api",
+      "modified": 1696095000003,
+      "created": 1696095000003,
+      "url": "http://localhost:3000/api/clientes",
+      "name": "4. Listar Clientes",
+      "description": "Listar todos os clientes cadastrados",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1696095000003,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_client_by_cpf",
+      "parentId": "fld_banking_api",
+      "modified": 1696095000004,
+      "created": 1696095000004,
+      "url": "http://localhost:3000/api/clientes/98765432100",
+      "name": "5. Buscar Cliente por CPF",
+      "description": "Buscar cliente específico pelo CPF",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1696095000004,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_list_accounts_by_client",
+      "parentId": "fld_banking_api",
+      "modified": 1696095000005,
+      "created": 1696095000005,
+      "url": "http://localhost:3000/api/contas/cliente/98765432100",
+      "name": "6. Listar Contas do Cliente",
+      "description": "Listar todas as contas de um cliente",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1696095000005,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_check_balance",
+      "parentId": "fld_banking_api",
+      "modified": 1696095000006,
+      "created": 1696095000006,
+      "url": "http://localhost:3000/api/contas/saldo/{{ _.numero_conta }}",
+      "name": "7. Consultar Saldo",
+      "description": "Consultar saldo de uma conta específica (substitua o número da conta)",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1696095000006,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_health_check",
+      "parentId": "fld_banking_api",
+      "modified": 1696095000007,
+      "created": 1696095000007,
+      "url": "http://localhost:3000/health",
+      "name": "8. Health Check",
+      "description": "Verificar saúde da API",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1696095000007,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_invalid_cpf_test",
+      "parentId": "fld_banking_api_tests",
+      "modified": 1696095000008,
+      "created": 1696095000008,
+      "url": "http://localhost:3000/api/clientes",
+      "name": "❌ Teste CPF Inválido",
+      "description": "Testar validação com CPF inválido (deve retornar erro)",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"Cliente Teste Erro\",\n  \"cpf\": \"123.456.789-00\",\n  \"data_nascimento\": \"1990-01-01\",\n  \"email\": \"erro@email.com\",\n  \"telefone\": \"11999888777\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1696095000008,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_invalid_client_account",
+      "parentId": "fld_banking_api_tests",
+      "modified": 1696095000009,
+      "created": 1696095000009,
+      "url": "http://localhost:3000/api/contas",
+      "name": "❌ Teste Cliente Inexistente",
+      "description": "Testar criação de conta para cliente inexistente (deve retornar erro)",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"cpf_cliente\": \"99999999999\",\n  \"tipo_conta\": \"corrente\",\n  \"saldo_inicial\": 1000.00\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1696095000009,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_banking_api",
+      "parentId": "wrk_banking_api",
+      "modified": 1696095000000,
+      "created": 1696095000000,
+      "name": "🏦 API Bancária - Fluxo Principal",
+      "description": "Endpoints principais da API bancária",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1696095000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_banking_api_tests",
+      "parentId": "wrk_banking_api",
+      "modified": 1696095000001,
+      "created": 1696095000001,
+      "name": "🧪 Testes de Validação",
+      "description": "Testes de validação e cenários de erro",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1696095000001,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_banking_api",
+      "parentId": null,
+      "modified": 1696095000000,
+      "created": 1696095000000,
+      "name": "API Bancária Itaú",
+      "description": "Collection completa para testar a API bancária Node.js",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_banking_api",
+      "parentId": "wrk_banking_api",
+      "modified": 1696095000000,
+      "created": 1696095000000,
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:3000",
+        "api_path": "/api",
+        "cpf_cliente": "98765432100",
+        "numero_conta": "SUBSTITUA_PELO_NUMERO_DA_CONTA"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "base_url",
+          "api_path", 
+          "cpf_cliente",
+          "numero_conta"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1696095000000,
+      "_type": "environment"
+    }
+  ]
+}
