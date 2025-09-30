@@ -4,6 +4,7 @@
 
 1. Usar Copilot Agent com ChatMode para gerar um plano de implementação a partir de um arquivo de arquitetura de uma solução de API bancária.
 2. Usar Prompt Reutilizavel para verificar violações DRY (Dont Repeat Yourself) no código gerado.
+3. Criar uma issue com o plano de otimização baseado na na validação DRY
 
 
 ## Prompts, Comandos e afins

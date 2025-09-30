@@ -1,0 +1,214 @@
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    /* Colors */
+    --primary-color: #ff7733;
+    --primary-dark: #ff5500;
+    --secondary-color: #3399ff;
+    --success-color: #33cc66;
+    --warning-color: #ffcc33;
+    --error-color: #ff5566;
+    --info-color: #33aacc;
+    
+    /* Neutral Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #999999;
+    --border-color: #444444;
+    --background-primary: #2d2d2d;
+    --background-secondary: #1a1a1a;
+    --background-tertiary: #333333;
+    
+    /* Shadows */
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Theme Toggle Animation */
+.theme-transition {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Apply transition to all relevant elements */
+body,
+.app,
+.sidebar,
+.main-content,
+.header,
+.content-section,
+.form-container,
+.metric-card,
+.chart-container,
+.table-container,
+.data-table th,
+.data-table td,
+.balance-result,
+.toast,
+input,
+select,
+textarea,
+.btn {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark theme specific adjustments */
+[data-theme="dark"] .sidebar {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+}
+
+[data-theme="dark"] .data-table tbody tr:hover {
+    background: var(--background-tertiary);
+}
+
+[data-theme="dark"] .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .nav-link.active {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] select:focus,
+[data-theme="dark"] textarea:focus {
+    box-shadow: 0 0 0 3px rgba(255, 119, 51, 0.2);
+}
+
+[data-theme="dark"] .form-group.has-error input,
+[data-theme="dark"] .form-group.has-error select {
+    box-shadow: 0 0 0 3px rgba(255, 85, 102, 0.2);
+}
+
+[data-theme="dark"] .form-group.has-success input,
+[data-theme="dark"] .form-group.has-success select {
+    box-shadow: 0 0 0 3px rgba(51, 204, 102, 0.2);
+}
+
+[data-theme="dark"] .form-group.has-warning input,
+[data-theme="dark"] .form-group.has-warning select {
+    box-shadow: 0 0 0 3px rgba(255, 204, 51, 0.2);
+}
+
+/* Theme toggle button states */
+.theme-toggle i {
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .theme-toggle i::before {
+    content: "\f185"; /* fa-sun */
+}
+
+/* Chart adjustments for dark theme */
+[data-theme="dark"] .chart-container canvas {
+    filter: brightness(0.9);
+}
+
+/* Scrollbar styling for dark theme */
+[data-theme="dark"] ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: var(--background-secondary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Light theme scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Theme-specific images and icons */
+[data-theme="dark"] .metric-icon {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+}
+
+/* Selection styles */
+::selection {
+    background: var(--primary-color);
+    color: white;
+}
+
+[data-theme="dark"] ::selection {
+    background: var(--primary-color);
+    color: var(--background-primary);
+}
+
+/* Focus styles */
+:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: #000000;
+        --text-secondary: #000000;
+    }
+    
+    [data-theme="dark"] {
+        --border-color: #ffffff;
+        --text-secondary: #ffffff;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .sidebar,
+    .theme-toggle,
+    .btn,
+    .toast-container {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin-left: 0 !important;
+    }
+    
+    .content-section {
+        display: block !important;
+    }
+    
+    .chart-container {
+        break-inside: avoid;
+    }
+    
+    .table-container {
+        break-inside: avoid;
+    }
+}

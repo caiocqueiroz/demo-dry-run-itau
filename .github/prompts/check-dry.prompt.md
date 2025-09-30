@@ -1,7 +1,6 @@
 ---
-mode: 'agent'
+mode: 'ask'
 description: 'Check DRY'
-tools: ['changes', 'codebase', 'fetch', 'findTestFiles', 'githubRepo', 'problems', 'runCommands', 'runTasks', 'runTests', 'search', 'searchResults', 'testFailure', 'usages', 'playwright', 'github', 'github-remote', 'Azure MCP Server']
 ---
 
 # 🔍 DRY Violation Analysis & Refactoring Recommendations
