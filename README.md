@@ -8,6 +8,7 @@ Uma API REST simples para sistema bancário desenvolvida em Node.js com Express 
 - **Criação de Contas**: Contas corrente e poupança associadas a clientes
 - **Consulta de Saldo**: Verificação de saldo por número da conta
 - **Listagem**: Listar clientes e contas
+- **Carrinho de Compras**: Gerenciar produtos no carrinho por cliente
 
 ## Tecnologias Utilizadas
 
@@ -111,6 +112,47 @@ GET /api/contas/saldo/1001
 GET /api/contas/cliente/12345678901
 ```
 
+### Carrinho de Compras
+
+#### Adicionar Produto ao Carrinho
+```http
+POST /api/carrinho
+Content-Type: application/json
+
+{
+  "cpf_cliente": "123.456.789-01",
+  "produto_id": "PROD001",
+  "nome_produto": "Notebook Dell Inspiron 15",
+  "preco_unitario": 2999.90,
+  "quantidade": 2
+}
+```
+
+#### Listar Carrinho do Cliente
+```http
+GET /api/carrinho/12345678901
+```
+
+#### Atualizar Quantidade de Produto
+```http
+PUT /api/carrinho/12345678901/PROD001
+Content-Type: application/json
+
+{
+  "quantidade": 3
+}
+```
+
+#### Remover Produto do Carrinho
+```http
+DELETE /api/carrinho/12345678901/PROD001
+```
+
+#### Limpar Carrinho
+```http
+DELETE /api/carrinho/12345678901
+```
+
 ## Estrutura do Projeto
 
 ```
@@ -120,19 +162,23 @@ src/
 │   └── logger.js             # Configuração do Winston
 ├── controllers/
 │   ├── ClienteController.js  # Controlador de clientes
-│   └── ContaController.js    # Controlador de contas
+│   ├── ContaController.js    # Controlador de contas
+│   └── CarrinhoController.js # Controlador de carrinho
 ├── middleware/
 │   ├── errorHandler.js       # Tratamento de erros
 │   └── requestLogger.js      # Log de requisições
 ├── models/
 │   ├── Cliente.js            # Model de cliente
-│   └── Conta.js              # Model de conta
+│   ├── Conta.js              # Model de conta
+│   └── Carrinho.js           # Model de carrinho
 ├── routes/
 │   ├── clienteRoutes.js      # Rotas de clientes
-│   └── contaRoutes.js        # Rotas de contas
+│   ├── contaRoutes.js        # Rotas de contas
+│   └── carrinhoRoutes.js     # Rotas de carrinho
 ├── services/
 │   ├── ClienteService.js     # Lógica de negócio - clientes
-│   └── ContaService.js       # Lógica de negócio - contas
+│   ├── ContaService.js       # Lógica de negócio - contas
+│   └── CarrinhoService.js    # Lógica de negócio - carrinho
 ├── utils/
 │   ├── cpfValidator.js       # Validador de CPF
 │   └── validators.js         # Schemas de validação Joi

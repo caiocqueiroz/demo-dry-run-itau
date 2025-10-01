@@ -62,15 +62,33 @@ class Database {
             )
         `;
 
+        const createCarrinhoTable = `
+            CREATE TABLE IF NOT EXISTS carrinho (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                cpf_cliente TEXT NOT NULL,
+                produto_id TEXT NOT NULL,
+                nome_produto TEXT NOT NULL,
+                preco_unitario DECIMAL(15,2) NOT NULL,
+                quantidade INTEGER NOT NULL DEFAULT 1,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (cpf_cliente) REFERENCES clientes(cpf),
+                UNIQUE(cpf_cliente, produto_id)
+            )
+        `;
+
         const createIndexes = [
             'CREATE INDEX IF NOT EXISTS idx_clientes_email ON clientes(email)',
             'CREATE INDEX IF NOT EXISTS idx_contas_cliente ON contas(cpf_cliente)',
-            'CREATE INDEX IF NOT EXISTS idx_contas_ativa ON contas(ativa)'
+            'CREATE INDEX IF NOT EXISTS idx_contas_ativa ON contas(ativa)',
+            'CREATE INDEX IF NOT EXISTS idx_carrinho_cliente ON carrinho(cpf_cliente)',
+            'CREATE INDEX IF NOT EXISTS idx_carrinho_produto ON carrinho(produto_id)'
         ];
 
         try {
             await this.run(createClientesTable);
             await this.run(createContasTable);
+            await this.run(createCarrinhoTable);
             
             for (const indexQuery of createIndexes) {
                 await this.run(indexQuery);
