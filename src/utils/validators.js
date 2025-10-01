@@ -189,10 +189,96 @@ const contaParamSchema = Joi.object({
         })
 });
 
+/**
+ * Schema para validação de item do carrinho
+ */
+const carrinhoItemSchema = Joi.object({
+    cpf_cliente: Joi.string()
+        .custom(cpfValidator)
+        .required()
+        .messages({
+            'any.invalid': 'CPF do cliente inválido',
+            'any.required': 'CPF do cliente é obrigatório'
+        }),
+    
+    produto_id: Joi.string()
+        .required()
+        .messages({
+            'any.required': 'ID do produto é obrigatório'
+        }),
+    
+    nome_produto: Joi.string()
+        .min(2)
+        .max(200)
+        .required()
+        .messages({
+            'string.min': 'Nome do produto deve ter pelo menos 2 caracteres',
+            'string.max': 'Nome do produto deve ter no máximo 200 caracteres',
+            'any.required': 'Nome do produto é obrigatório'
+        }),
+    
+    preco_unitario: Joi.number()
+        .positive()
+        .precision(2)
+        .required()
+        .messages({
+            'number.positive': 'Preço unitário deve ser maior que zero',
+            'number.precision': 'Preço deve ter no máximo 2 casas decimais',
+            'any.required': 'Preço unitário é obrigatório'
+        }),
+    
+    quantidade: Joi.number()
+        .integer()
+        .positive()
+        .required()
+        .messages({
+            'number.integer': 'Quantidade deve ser um número inteiro',
+            'number.positive': 'Quantidade deve ser maior que zero',
+            'any.required': 'Quantidade é obrigatória'
+        })
+});
+
+/**
+ * Schema para atualização de quantidade no carrinho
+ */
+const carrinhoQuantidadeSchema = Joi.object({
+    quantidade: Joi.number()
+        .integer()
+        .positive()
+        .required()
+        .messages({
+            'number.integer': 'Quantidade deve ser um número inteiro',
+            'number.positive': 'Quantidade deve ser maior que zero',
+            'any.required': 'Quantidade é obrigatória'
+        })
+});
+
+/**
+ * Schema para validação de parâmetros do carrinho
+ */
+const carrinhoParamSchema = Joi.object({
+    cpf: Joi.string()
+        .custom(cpfValidator)
+        .required()
+        .messages({
+            'any.invalid': 'CPF inválido',
+            'any.required': 'CPF é obrigatório'
+        }),
+    
+    produtoId: Joi.string()
+        .required()
+        .messages({
+            'any.required': 'ID do produto é obrigatório'
+        })
+});
+
 module.exports = {
     clienteSchema,
     clienteUpdateSchema,
     contaSchema,
     cpfParamSchema,
-    contaParamSchema
+    contaParamSchema,
+    carrinhoItemSchema,
+    carrinhoQuantidadeSchema,
+    carrinhoParamSchema
 };

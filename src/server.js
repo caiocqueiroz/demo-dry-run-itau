@@ -15,6 +15,7 @@ const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 // Importar rotas
 const clienteRoutes = require('./routes/clienteRoutes');
 const contaRoutes = require('./routes/contaRoutes');
+const carrinhoRoutes = require('./routes/carrinhoRoutes');
 
 // Criar aplicação Express
 const app = express();
@@ -94,6 +95,7 @@ app.get('/api', (req, res) => {
             endpoints: {
                 clientes: '/api/clientes',
                 contas: '/api/contas',
+                carrinho: '/api/carrinho',
                 health: '/health',
                 docs: '/api-docs'
             },
@@ -103,6 +105,7 @@ app.get('/api', (req, res) => {
                 'Consulta de saldo',
                 'Depósitos e saques',
                 'Transferências',
+                'Carrinho de compras',
                 'Validação de CPF',
                 'Logging estruturado',
                 'Rate limiting'
@@ -114,6 +117,7 @@ app.get('/api', (req, res) => {
 // Configurar rotas da API
 app.use('/api/clientes', clienteRoutes);
 app.use('/api/contas', contaRoutes);
+app.use('/api/carrinho', carrinhoRoutes);
 
 // Middleware para rotas não encontradas
 app.use(notFoundHandler);
